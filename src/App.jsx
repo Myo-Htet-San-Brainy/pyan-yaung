@@ -52,3 +52,8 @@ const App = () => {
 };
 
 export default App;
+
+function testLoader() {
+  console.log("test loader");
+  return null;
+}
