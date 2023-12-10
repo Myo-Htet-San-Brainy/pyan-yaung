@@ -2,6 +2,7 @@ import { useLoaderData, Link } from "react-router-dom";
 
 const GridProducts = () => {
   //   const { products } = useLoaderData();
+
   const products = [];
   return (
     <div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">

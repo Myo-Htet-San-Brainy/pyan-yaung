@@ -7,3 +7,5 @@ export { default as ProductsContainer } from "./ProductsContainer";
 export { default as FormSelect } from "./FormSelect";
 export { default as GridProducts } from "./GridProducts";
 export { default as ListProducts } from "./ListProducts";
+export { default as Navbar } from "./Navbar";
+export { default as NavLinks } from "./NavLinks";
