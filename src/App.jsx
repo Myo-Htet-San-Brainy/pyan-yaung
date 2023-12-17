@@ -15,6 +15,7 @@ import {
 
 //loader imports
 import { loader as allProductsLoader } from "./pages/AllProducts";
+import { loader as singleProductLoader } from "./pages/Product";
 //action imports
 
 const router = createBrowserRouter([
@@ -39,8 +40,9 @@ const router = createBrowserRouter([
         loader: allProductsLoader,
       },
       {
-        path: "product/:id",
+        path: "products/:id",
         element: <Product />,
+        loader: singleProductLoader,
       },
       {
         path: "myProducts",
