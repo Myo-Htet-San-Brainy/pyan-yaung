@@ -1,10 +1,14 @@
-import { Filters, ProductsContainer, PaginationContainer } from "../components";
+import { Filters, ProductsContainer } from "../components";
 import { instance } from "../utils";
 
-export async function loader() {
-  const res = await instance.get("/products");
+export async function loader({ request }) {
+  const params = Object.fromEntries([
+    ...new URL(request.url).searchParams.entries(),
+  ]);
+  const res = await instance.get("/products", { params });
   return {
     products: res.data.data,
+    params,
   };
 }
 
@@ -13,7 +17,6 @@ const AllProducts = () => {
     <div>
       <Filters />
       <ProductsContainer />
-      <PaginationContainer />
     </div>
   );
 };
