@@ -1,5 +1,7 @@
+//package imports
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+//imports
 import {
   AllProducts,
   Login,
@@ -10,6 +12,10 @@ import {
   Error,
   CommonLayout,
 } from "./pages";
+
+//loader imports
+import { loader as allProductsLoader } from "./pages/AllProducts";
+//action imports
 
 const router = createBrowserRouter([
   {
@@ -30,6 +36,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <AllProducts />,
+        loader: allProductsLoader,
       },
       {
         path: "product/:id",

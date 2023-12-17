@@ -2,18 +2,17 @@ import { useLoaderData, Link } from "react-router-dom";
 import { defaultImage } from "../assets/defaultImage";
 
 const ListProducts = () => {
-  //   const { products } = useLoaderData();
-  const products = [];
+  const { products } = useLoaderData();
+  // const products = [];
 
   return (
     <div className="mt-12 grid gap-y-8">
       {products.map((product, index) => {
-        const productId = product?.id || index;
-        const prodAttributes = product?.attributes;
-        const company = prodAttributes?.company || "some company name";
-        const image = prodAttributes?.image || defaultImage;
-        const price = prodAttributes?.price || 0;
-        const title = prodAttributes?.title || "some title";
+        const productId = product?._id || index;
+
+        const image = product?.image || defaultImage;
+        const price = product?.price || 0;
+        const title = product?.name || "some title";
         return (
           <Link
             key={productId}
@@ -27,13 +26,8 @@ const ListProducts = () => {
             />
             <div className="ml-0 sm:ml-16">
               <h1 className="capitalize font-medium text-lg">{title}</h1>
-              <h1 className="capitalize text-md text-neutral-content">
-                {company}
-              </h1>
             </div>
-            <p className="font-medium ml-0 sm:ml-auto text-lg">
-              {formatPrice(price)}
-            </p>
+            <p className="font-medium ml-0 sm:ml-auto text-lg">{price} baht</p>
           </Link>
         );
       })}
