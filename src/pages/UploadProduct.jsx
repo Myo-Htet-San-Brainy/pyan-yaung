@@ -2,8 +2,10 @@ import { Form } from "react-router-dom";
 import { FormCheckbox, FormInput, FormSelect, SubmitBtn } from "../components";
 import { categories } from "../assets/data";
 
-export async function action() {
-  console.log("action");
+export async function action({ request }) {
+  const formEntries = await request.formData();
+  const data = Object.fromEntries(formEntries);
+  console.log(data);
   return null;
 }
 
