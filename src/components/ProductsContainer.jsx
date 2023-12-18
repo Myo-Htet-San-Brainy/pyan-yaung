@@ -4,7 +4,7 @@ import { FaThList } from "react-icons/fa";
 import { BsFillGridFill } from "react-icons/bs";
 import { useState } from "react";
 
-const ProductsContainer = () => {
+const ProductsContainer = ({ noOfProducts }) => {
   // const { products } = useLoaderData();
   const products = [];
 
@@ -44,6 +44,7 @@ const ProductsContainer = () => {
             <FaThList />
           </button>
         </div>
+        <h1>{noOfProducts && `No Of Products : ${noOfProducts}`}</h1>
       </header>
       {/* PRODUCTS */}
       {isGrid ? <GridProducts /> : <ListProducts />}

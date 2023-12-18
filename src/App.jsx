@@ -16,7 +16,10 @@ import {
 //loader imports
 import { loader as allProductsLoader } from "./pages/AllProducts";
 import { loader as singleProductLoader } from "./pages/Product";
+import { loader as myProductsLoader } from "./pages/MyProducts";
+
 //action imports
+import { action as loginAction } from "./pages/Login";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +31,7 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
     errorElement: <Error />,
+    action: loginAction,
   },
   {
     path: "/",
@@ -47,6 +51,7 @@ const router = createBrowserRouter([
       {
         path: "myProducts",
         element: <MyProducts />,
+        loader: myProductsLoader,
       },
       {
         path: "uploadProduct",

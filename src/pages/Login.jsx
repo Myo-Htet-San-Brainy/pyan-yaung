@@ -1,5 +1,27 @@
 import { FormInput, SubmitBtn } from "../components";
-import { Link, Form } from "react-router-dom";
+import { Link, Form, redirect } from "react-router-dom";
+import { instance } from "../utils";
+import { toast } from "react-toastify";
+
+export async function action({ request }) {
+  try {
+    const formEntries = await request.formData();
+    const data = Object.fromEntries(formEntries);
+    const res = await instance.post("/auth/login", data);
+    if (res.status === 200) {
+      const { jwt } = res.data;
+      localStorage.setItem("jwt", JSON.stringify(jwt));
+      toast.success("login success");
+      return redirect("/");
+    }
+  } catch (error) {
+    const errorMessage =
+      error?.response?.data?.error?.message ||
+      "please double check your credentials";
+    toast.error(errorMessage);
+    return null;
+  }
+}
 
 const Login = () => {
   return (
@@ -9,7 +31,7 @@ const Login = () => {
         method="post"
       >
         <h4 className="capitalize text-2xl font-bold text-center">Login</h4>
-        <FormInput label="email" name="identifier" type="email" />
+        <FormInput label="email" name="email" type="email" />
         <FormInput label="password" name="password" type="password" />
         <div className="mt-8">
           <SubmitBtn text="Login" />
