@@ -1,4 +1,11 @@
-const FormInput = ({ label, name, type, defaultValue, size }) => {
+const FormInput = ({
+  label,
+  name,
+  type,
+  defaultValue,
+  size,
+  isRequired = false,
+}) => {
   return (
     <div className="form-control">
       <label className="label">
@@ -10,6 +17,7 @@ const FormInput = ({ label, name, type, defaultValue, size }) => {
         defaultValue={defaultValue}
         placeholder="Type here"
         className={`input input-bordered ${size}`}
+        required={isRequired}
       />
     </div>
   );
