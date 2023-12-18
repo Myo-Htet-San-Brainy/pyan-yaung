@@ -4,7 +4,7 @@ import { FaThList } from "react-icons/fa";
 import { BsFillGridFill } from "react-icons/bs";
 import { useState } from "react";
 
-const ProductsContainer = ({ noOfProducts }) => {
+const ProductsContainer = ({ noOfProducts, showDeleteAProductBtn }) => {
   // const { products } = useLoaderData();
   const products = [];
 
@@ -47,7 +47,11 @@ const ProductsContainer = ({ noOfProducts }) => {
         <h1>{noOfProducts && `No Of Products : ${noOfProducts}`}</h1>
       </header>
       {/* PRODUCTS */}
-      {isGrid ? <GridProducts /> : <ListProducts />}
+      {isGrid ? (
+        <GridProducts showDeleteAProductBtn={showDeleteAProductBtn} />
+      ) : (
+        <ListProducts showDeleteAProductBtn={showDeleteAProductBtn} />
+      )}
     </>
   );
 };

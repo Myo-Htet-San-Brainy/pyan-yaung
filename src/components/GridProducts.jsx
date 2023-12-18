@@ -1,6 +1,6 @@
 import { useLoaderData, Link } from "react-router-dom";
 
-const GridProducts = () => {
+const GridProducts = ({ showDeleteAProductBtn }) => {
   const { products } = useLoaderData();
 
   // const products = [];
@@ -14,7 +14,7 @@ const GridProducts = () => {
         return (
           <Link
             key={id}
-            to={`/products/${id}`}
+            to={`/products/${id}/${showDeleteAProductBtn}`}
             className="card w-full shadow-xl hover:shadow-2xl transition duration-300"
           >
             <figure className="px-4 pt-4">

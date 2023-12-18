@@ -1,14 +1,15 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link, useNavigate } from "react-router-dom";
 import { instance } from "../utils";
+import { toast } from "react-toastify";
 
 export async function loader({ params }) {
-  const { id: productId } = params;
+  const { id: productId, showDeleteAProductBtn } = params;
   const res = await instance.get(`/products/${productId}`);
-  return { product: res.data.data };
+  return { product: res.data.data, showDeleteAProductBtn };
 }
 
 const Product = () => {
-  const { product } = useLoaderData();
+  const { product, showDeleteAProductBtn } = useLoaderData();
   const {
     image,
     name: title,
@@ -19,7 +20,27 @@ const Product = () => {
     lineId,
     phNo,
     userId,
+    _id,
   } = product;
+
+  //Remove product logic
+  const navigate = useNavigate();
+  async function removeProduct() {
+    try {
+      const jwt = JSON.parse(localStorage.getItem("jwt"));
+      const res = await instance.delete(`/products/${_id}`, {
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      });
+      if (res.status === 200) {
+        toast.success("Product Removed");
+        navigate("/myProducts");
+      }
+    } catch (error) {
+      toast.error("Oops! Please try again later.");
+    }
+  }
   return (
     <section>
       <div className="text-md breadcrumbs">
@@ -49,6 +70,14 @@ const Product = () => {
           <p className="mt-3 leading-8">{description}</p>
           <p className="mt-3 text-2xl">LineId: {lineId}</p>
           <p className="mt-3 text-2xl">Phone Number: {phNo}</p>
+          {showDeleteAProductBtn && (
+            <button
+              className="mt-8 btn btn-primary tracking-wider capitalize"
+              onClick={removeProduct}
+            >
+              Remove this product from the site
+            </button>
+          )}
         </div>
       </div>
     </section>

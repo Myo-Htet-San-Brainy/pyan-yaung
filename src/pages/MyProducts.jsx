@@ -18,7 +18,10 @@ const MyProducts = () => {
   const { products } = useLoaderData();
   return (
     <div>
-      <ProductsContainer noOfProducts={products.length} />
+      <ProductsContainer
+        noOfProducts={products.length}
+        showDeleteAProductBtn={true}
+      />
     </div>
   );
 };

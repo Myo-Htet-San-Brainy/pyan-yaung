@@ -1,7 +1,7 @@
 import { useLoaderData, Link } from "react-router-dom";
 import { defaultImage } from "../assets/defaultImage";
 
-const ListProducts = () => {
+const ListProducts = ({ showDeleteAProductBtn }) => {
   const { products } = useLoaderData();
   // const products = [];
 
