@@ -9,3 +9,4 @@ export { default as GridProducts } from "./GridProducts";
 export { default as ListProducts } from "./ListProducts";
 export { default as Navbar } from "./Navbar";
 export { default as NavLinks } from "./NavLinks";
+export { default as FormCheckbox } from "./FormCheckbox";
