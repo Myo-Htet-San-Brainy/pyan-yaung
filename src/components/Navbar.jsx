@@ -1,17 +1,33 @@
-import { BsCart3, BsMoonFill, BsSunFill } from "react-icons/bs";
+import { useEffect } from "react";
+import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 
 const Navbar = ({ children }) => {
+  //
+  function handleTheme(e) {
+    if (e.currentTarget.checked) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.setAttribute("data-theme", "cupcake");
+    }
+    localStorage.setItem("theme", JSON.stringify(e.currentTarget.checked));
+  }
+  //
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("theme"))) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.setAttribute("data-theme", "cupcake");
+    }
+  }, []);
+  //
   return (
     <nav className="bg-base-200">
       <div className="navbar align-element ">
         <div className="navbar-start">
           {/* Title */}
-          <NavLink
-            to="/"
-            className="hidden lg:flex btn btn-primary text-3xl items-center bg-transparent border-none"
-          >
+          <NavLink to="/" className="hidden lg:flex  text-3xl items-center ">
             Pyan Yaung
           </NavLink>
           {/* DROPDOWN */}
@@ -34,7 +50,11 @@ const Navbar = ({ children }) => {
           {/* THEME ICONS */}
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              onClick={handleTheme}
+              defaultChecked={JSON.parse(localStorage.getItem("theme"))}
+            />
 
             {/* sun icon*/}
             <BsSunFill className="swap-on h-4 w-4" />
