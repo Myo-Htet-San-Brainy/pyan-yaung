@@ -11,6 +11,7 @@ import {
   UploadProduct,
   Error,
   CommonLayout,
+  EmailVerify,
 } from "./pages";
 
 //loader imports
@@ -18,9 +19,11 @@ import { loader as allProductsLoader } from "./pages/AllProducts";
 import { loader as singleProductLoader } from "./pages/Product";
 import { loader as myProductsLoader } from "./pages/MyProducts";
 import { loader as uploadProductLoader } from "./pages/UploadProduct";
+import { loader as emailVerifyLoader } from "./pages/EmailVerify";
 
 //action imports
 import { action as loginAction } from "./pages/Login";
+import { action as registerAction } from "./pages/Register";
 import { action as uploadProductAction } from "./pages/UploadProduct";
 
 const router = createBrowserRouter([
@@ -28,12 +31,19 @@ const router = createBrowserRouter([
     path: "/register",
     element: <Register />,
     errorElement: <Error />,
+    action: registerAction,
   },
   {
     path: "/login",
     element: <Login />,
     errorElement: <Error />,
     action: loginAction,
+  },
+  {
+    path: "/verify",
+    element: <EmailVerify />,
+    errorElement: <Error />,
+    loader: emailVerifyLoader,
   },
   {
     path: "/",

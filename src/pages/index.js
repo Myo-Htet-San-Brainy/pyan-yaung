@@ -6,3 +6,4 @@ export { default as MyProducts } from "./MyProducts";
 export { default as UploadProduct } from "./UploadProduct";
 export { default as Error } from "./Error";
 export { default as CommonLayout } from "./CommonLayout";
+export { default as EmailVerify } from "./EmailVerify";

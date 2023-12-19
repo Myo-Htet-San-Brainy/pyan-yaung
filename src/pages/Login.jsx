@@ -31,8 +31,13 @@ const Login = () => {
         method="post"
       >
         <h4 className="capitalize text-2xl font-bold text-center">Login</h4>
-        <FormInput label="email" name="email" type="email" />
-        <FormInput label="password" name="password" type="password" />
+        <FormInput label="email" name="email" type="email" isRequired={true} />
+        <FormInput
+          label="password"
+          name="password"
+          type="password"
+          isRequired={true}
+        />
         <div className="mt-8">
           <SubmitBtn text="Login" />
         </div>
