@@ -4,6 +4,15 @@ import { categories } from "../assets/data";
 import { instance } from "../utils";
 import { toast } from "react-toastify";
 
+export function loader() {
+  const jwt = JSON.parse(localStorage.getItem("jwt")) || undefined;
+  if (!jwt) {
+    toast.success("Please log in first to upload a product.");
+    return redirect("/login");
+  }
+  return null;
+}
+
 export async function action({ request }) {
   try {
     //get data
@@ -41,8 +50,12 @@ export async function action({ request }) {
     throw new Error("Something went wrong");
   } catch (error) {
     console.log(error);
+    if (error?.response?.status === 403) {
+      toast("Please log in first");
+      return redirect("/login");
+    }
     const errorMessage =
-      error?.response?.data?.error?.message ||
+      error?.response?.data?.message ||
       "Product upload was not successful. Please try again later.";
     toast.error(errorMessage);
     return null;

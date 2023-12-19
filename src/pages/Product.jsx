@@ -3,7 +3,8 @@ import { instance } from "../utils";
 import { toast } from "react-toastify";
 
 export async function loader({ params }) {
-  const { id: productId, showDeleteAProductBtn } = params;
+  let { id: productId, showDeleteAProductBtn } = params;
+  showDeleteAProductBtn = showDeleteAProductBtn === "true" ? true : false;
   const res = await instance.get(`/products/${productId}`);
   return { product: res.data.data, showDeleteAProductBtn };
 }
@@ -41,6 +42,7 @@ const Product = () => {
       toast.error("Oops! Please try again later.");
     }
   }
+
   return (
     <section>
       <div className="text-md breadcrumbs">

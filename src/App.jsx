@@ -17,6 +17,7 @@ import {
 import { loader as allProductsLoader } from "./pages/AllProducts";
 import { loader as singleProductLoader } from "./pages/Product";
 import { loader as myProductsLoader } from "./pages/MyProducts";
+import { loader as uploadProductLoader } from "./pages/UploadProduct";
 
 //action imports
 import { action as loginAction } from "./pages/Login";
@@ -58,6 +59,7 @@ const router = createBrowserRouter([
         path: "uploadProduct",
         element: <UploadProduct />,
         action: uploadProductAction,
+        loader: uploadProductLoader,
       },
     ],
   },

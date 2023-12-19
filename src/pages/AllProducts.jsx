@@ -16,7 +16,7 @@ const AllProducts = () => {
   return (
     <div>
       <Filters />
-      <ProductsContainer />
+      <ProductsContainer showDeleteAProductBtn={false} />
     </div>
   );
 };

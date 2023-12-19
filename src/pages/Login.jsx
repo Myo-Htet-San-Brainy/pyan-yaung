@@ -15,9 +15,9 @@ export async function action({ request }) {
       return redirect("/");
     }
   } catch (error) {
+    console.log(error);
     const errorMessage =
-      error?.response?.data?.error?.message ||
-      "please double check your credentials";
+      error?.response?.data?.message || "please double check your credentials";
     toast.error(errorMessage);
     return null;
   }
