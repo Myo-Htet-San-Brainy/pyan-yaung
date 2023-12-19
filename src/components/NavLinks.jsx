@@ -6,10 +6,16 @@ const links = [
 ];
 
 const NavLinks = () => {
+  const jwt = JSON.parse(localStorage.getItem("jwt")) || undefined;
   return (
     <>
       {links.map((link) => {
         const { id, url, text } = link;
+        if (!jwt) {
+          if (text === "My Products" || text === "Upload A Product") {
+            return;
+          }
+        }
         return (
           <li key={id}>
             <NavLink to={url} className="capitalize">
