@@ -24,7 +24,14 @@ export async function action({ request }) {
 }
 
 const Register = () => {
-  const { email } = useActionData();
+  //
+  const data = useActionData();
+  if (!data) {
+    var email = undefined;
+  } else {
+    var { email } = data;
+  }
+  //
   async function handleSendVerificationEmailAgain() {
     if (email === undefined) {
       toast.error("Please use another email and register again.");
@@ -49,6 +56,7 @@ const Register = () => {
       toast.error(errorMessage);
     }
   }
+  //
   return (
     <section className="h-screen grid place-items-center">
       <Form
