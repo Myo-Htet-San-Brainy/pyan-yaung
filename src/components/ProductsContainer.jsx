@@ -5,9 +5,6 @@ import { BsFillGridFill } from "react-icons/bs";
 import { useState } from "react";
 
 const ProductsContainer = ({ noOfProducts, showDeleteAProductBtn }) => {
-  // const { products } = useLoaderData();
-  const products = [];
-
   const [isGrid, setIsGrid] = useState(true);
 
   function handleToggleLayout(layout) {
@@ -17,10 +14,15 @@ const ProductsContainer = ({ noOfProducts, showDeleteAProductBtn }) => {
       setIsGrid(false);
     }
   }
-
   return (
     <>
       <header className="flex justify-between items-center mt-8 border-b border-base-300 pb-5">
+        {/* NO OF PRODUCTS */}
+        {noOfProducts !== undefined && (
+          <h2 className="text-md font-medium ">
+            {`${noOfProducts} product${noOfProducts <= 1 ? "" : "s"}`}
+          </h2>
+        )}
         {/* TOGGLE BUTTONS */}
         <div className="flex gap-x-2">
           <button
@@ -44,7 +46,6 @@ const ProductsContainer = ({ noOfProducts, showDeleteAProductBtn }) => {
             <FaThList />
           </button>
         </div>
-        <h1>{noOfProducts && `No Of Products : ${noOfProducts}`}</h1>
       </header>
       {/* PRODUCTS */}
       {isGrid ? (

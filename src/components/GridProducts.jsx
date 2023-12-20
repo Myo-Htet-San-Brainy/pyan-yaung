@@ -3,7 +3,13 @@ import { useLoaderData, Link } from "react-router-dom";
 const GridProducts = ({ showDeleteAProductBtn }) => {
   const { products } = useLoaderData();
 
-  // const products = [];
+  if (products.length <= 0) {
+    return (
+      <div className="p-14 grid place-items-center">
+        <h1>There are no products for now.</h1>
+      </div>
+    );
+  }
   return (
     <div className="pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {products.map((prod) => {

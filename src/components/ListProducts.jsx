@@ -3,8 +3,15 @@ import { defaultImage } from "../assets/defaultImage";
 
 const ListProducts = ({ showDeleteAProductBtn }) => {
   const { products } = useLoaderData();
-  // const products = [];
-
+  //
+  if (products.length <= 0) {
+    return (
+      <div className="p-14 grid place-items-center">
+        <h1>There are no products for now.</h1>
+      </div>
+    );
+  }
+  //
   return (
     <div className="mt-12 grid gap-y-8">
       {products.map((product, index) => {
