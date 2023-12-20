@@ -1,5 +1,5 @@
 import { FormInput, SubmitBtn } from "../components";
-import { Link, Form, redirect } from "react-router-dom";
+import { Link, Form, redirect, useActionData } from "react-router-dom";
 import { instance } from "../utils";
 import { toast } from "react-toastify";
 
@@ -12,18 +12,43 @@ export async function action({ request }) {
     const res = await instance.post("/auth/register", data);
     if (res.status === 201) {
       toast.success(res.data.message);
-      return null;
+      return { email: data.email };
     }
   } catch (error) {
     console.log(error);
     const errorMessage =
       error?.response?.data?.message || "please double check your credentials";
     toast.error(errorMessage);
-    return null;
+    return { email: undefined };
   }
 }
 
 const Register = () => {
+  const { email } = useActionData();
+  async function handleSendVerificationEmailAgain() {
+    if (email === undefined) {
+      toast.error("Please use another email and register again.");
+      return;
+    }
+    try {
+      //
+      const res = await instance.post("/auth/send-verification-email-again", {
+        email,
+      });
+      //
+      if (res.status === 200) {
+        toast.success(
+          "Verification Email Sent Again. Please Check Inbox Of Email You Used To Register."
+        );
+      }
+    } catch (error) {
+      console.log(error);
+      const errorMessage =
+        error?.response?.data?.message ||
+        "Something went wrong in sending verification email again";
+      toast.error(errorMessage);
+    }
+  }
   return (
     <section className="h-screen grid place-items-center">
       <Form
@@ -64,6 +89,12 @@ const Register = () => {
           >
             login
           </Link>
+        </p>
+        <p
+          className="text-center text-primary hover:text-secondary transition-colors"
+          onClick={handleSendVerificationEmailAgain}
+        >
+          Send Email Verification Link Again
         </p>
       </Form>
     </section>
