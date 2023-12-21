@@ -69,21 +69,13 @@ const Register = () => {
           label="username"
           name="username"
           isRequired={true}
-          defaultValue={"Brainy"}
         />
-        <FormInput
-          type="email"
-          label="email"
-          name="email"
-          isRequired={true}
-          defaultValue={"hi@gmail.com"}
-        />
+        <FormInput type="email" label="email" name="email" isRequired={true} />
         <FormInput
           type="password"
           label="password"
           name="password"
           isRequired={true}
-          defaultValue={"secret"}
         />
         <div className="mt-4">
           <SubmitBtn text="register" />
