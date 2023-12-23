@@ -1,5 +1,9 @@
 //package imports
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createHashRouter,
+  RouterProvider,
+} from "react-router-dom";
 
 //imports
 import {
@@ -26,7 +30,7 @@ import { action as loginAction } from "./pages/Login";
 import { action as registerAction } from "./pages/Register";
 import { action as uploadProductAction } from "./pages/UploadProduct";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/register",
     element: <Register />,
