@@ -1,6 +1,7 @@
 import { useLoaderData, Link, useNavigate } from "react-router-dom";
 import { instance } from "../utils";
 import { toast } from "react-toastify";
+import { FaLine } from "react-icons/fa6";
 
 export async function loader({ params }) {
   let { id: productId, showDeleteAProductBtn } = params;
@@ -70,7 +71,14 @@ const Product = () => {
             {price} baht{isNego ? "(Negotiable)" : ""}
           </p>
           <p className="mt-3 leading-8">{description}</p>
-          <p className="mt-3 text-2xl">LineId: {lineId}</p>
+          <a
+            href={`https://line.me/ti/p/~@${lineId}`}
+            target="_blank"
+            className="mt-5 btn bg-green-400"
+          >
+            <FaLine />
+            <span>{lineId}</span>
+          </a>
           <p className="mt-3 text-2xl">Phone Number: {phNo}</p>
           {showDeleteAProductBtn && (
             <button
