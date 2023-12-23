@@ -1,6 +1,8 @@
 export const categories = [
   "All",
   "Fashion And Apparel",
+  "Food And Snacks",
+  "Burmese Food",
   "Home And Living",
   "Electronics And Tech",
   "Sports And Fitness",
