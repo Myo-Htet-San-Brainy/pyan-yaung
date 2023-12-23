@@ -72,7 +72,7 @@ const Product = () => {
           </p>
           <p className="mt-3 leading-8">{description}</p>
           <a
-            href={`https://line.me/ti/p/~@${lineId}`}
+            href={`https://line.me/ti/p/~${lineId}`}
             target="_blank"
             className="mt-5 btn bg-green-400"
           >
