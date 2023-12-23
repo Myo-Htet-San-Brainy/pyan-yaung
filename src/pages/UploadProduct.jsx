@@ -73,31 +73,19 @@ const UploadProduct = () => {
         <h4 className="capitalize text-2xl font-bold text-center">
           Upload And Sell Your Product
         </h4>
-        <FormInput
-          label="name"
-          name="name"
-          type={"text"}
-          isRequired={true}
-          defaultValue={"chair"}
-        />
+        <FormInput label="name" name="name" type={"text"} isRequired={true} />
         <FormInput
           label={"price"}
           name={"price"}
           type={"number"}
           isRequired={true}
-          defaultValue={1000}
         />
         <FormCheckbox
           label={"Is Price Negotiable?"}
           name={"isNego"}
           defaultValue={true}
         />
-        <FormSelect
-          label={"category"}
-          name={"category"}
-          list={categories}
-          defaultValue={"All"}
-        />
+        <FormSelect label={"category"} name={"category"} list={categories} />
         <label htmlFor="description">Description</label>
         <textarea
           name="description"
@@ -105,21 +93,18 @@ const UploadProduct = () => {
           cols="30"
           rows="5"
           required={true}
-          defaultValue={"Some description"}
         ></textarea>
         <FormInput
           label={"Phone Number"}
           name={"phNo"}
           type={"text"}
           isRequired={true}
-          defaultValue={"0994765425"}
         />
         <FormInput
           label={"Line Id"}
           name={"lineId"}
           type={"text"}
           isRequired={true}
-          defaultValue={"brainythemilkdrinker"}
         />
         <label className="label" htmlFor="image">
           <span className="label-text capitalize">Choose Product Image</span>
