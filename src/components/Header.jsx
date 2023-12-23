@@ -31,6 +31,7 @@ const Header = () => {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
     toast.success("Logged Out");
+    location.reload();
   }
 
   return (
