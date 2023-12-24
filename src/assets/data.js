@@ -13,3 +13,5 @@ export const categories = [
   "Pets And Pet Supplies",
   "Vehicles",
 ];
+
+export const currencyTypes = ["THB", "MMK", "USD"];

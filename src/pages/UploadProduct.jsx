@@ -1,6 +1,6 @@
 import { Form, redirect } from "react-router-dom";
 import { FormCheckbox, FormInput, FormSelect, SubmitBtn } from "../components";
-import { categories } from "../assets/data";
+import { categories, currencyTypes } from "../assets/data";
 import { instance } from "../utils";
 import { toast } from "react-toastify";
 
@@ -84,6 +84,11 @@ const UploadProduct = () => {
           label={"Is Price Negotiable?"}
           name={"isNego"}
           defaultValue={true}
+        />
+        <FormSelect
+          label={"currency type"}
+          name={"currencyType"}
+          list={currencyTypes}
         />
         <FormSelect label={"category"} name={"category"} list={categories} />
         <label htmlFor="description">Description</label>

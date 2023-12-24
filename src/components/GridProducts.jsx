@@ -17,6 +17,7 @@ const GridProducts = ({ showDeleteAProductBtn }) => {
         const image = prod?.image;
         const title = prod?.name;
         const price = prod?.price;
+        const currencyType = prod?.currencyType;
         return (
           <Link
             key={id}
@@ -32,7 +33,9 @@ const GridProducts = ({ showDeleteAProductBtn }) => {
             </figure>
             <div className="card-body items-center text-center">
               <h2 className="card-title capitalize tracking-wider">{title}</h2>
-              <span className="text-secondary">{price} baht</span>
+              <span className="text-secondary">
+                {price} {currencyType}
+              </span>
             </div>
           </Link>
         );

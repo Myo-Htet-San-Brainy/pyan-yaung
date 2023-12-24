@@ -19,6 +19,7 @@ const ListProducts = ({ showDeleteAProductBtn }) => {
 
         const image = product?.image || defaultImage;
         const price = product?.price || 0;
+        const currencyType = product?.currencyType;
         const title = product?.name || "some title";
         return (
           <Link
@@ -34,7 +35,9 @@ const ListProducts = ({ showDeleteAProductBtn }) => {
             <div className="ml-0 sm:ml-16">
               <h1 className="capitalize font-medium text-lg">{title}</h1>
             </div>
-            <p className="font-medium ml-0 sm:ml-auto text-lg">{price} baht</p>
+            <p className="font-medium ml-0 sm:ml-auto text-lg">
+              {price} {currencyType}
+            </p>
           </Link>
         );
       })}

@@ -11,11 +11,13 @@ export async function loader({ params }) {
 }
 
 const Product = () => {
+  //
   const { product, showDeleteAProductBtn } = useLoaderData();
-  const {
+  let {
     image,
     name: title,
     category,
+    currencyType,
     price,
     description,
     isNego,
@@ -68,7 +70,8 @@ const Product = () => {
             {category}
           </h1>
           <p className="mt-3 text-2xl">
-            {price} baht{isNego ? "(Negotiable)" : ""}
+            {price} {currencyType}
+            {isNego ? "(Negotiable)" : ""}
           </p>
           <p className="mt-3 leading-8">{description}</p>
           <a

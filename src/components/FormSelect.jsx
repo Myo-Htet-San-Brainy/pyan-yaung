@@ -1,7 +1,7 @@
 const FormSelect = ({ label, name, list, defaultValue, size, isRequired }) => {
   return (
     <div className="form-control">
-      <label className="label">
+      <label className="label capitalize">
         <span className="label-text">{label}</span>
       </label>
       <select
